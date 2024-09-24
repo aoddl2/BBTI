@@ -65,20 +65,40 @@ const App = () => {
 
   // 학번을 입력한 후 '저장' 버튼 클릭 시 서버로 데이터를 보내는 함수
   const handleModalSubmit = async (studentId) => {
-    // 서버로 보낼 데이터 구성: MBTI 결과와 학번
-    const data = {
-      // mbtiResult: mbtiResult,
-      studentId: studentId,
-    };
+    // 이벤트 참여 기간 설정
+    const startDate = '2024-09-23';
+    const endDate = '2024-10-31';
 
     try {
-      // 서버 URL로 POST 요청을 통해 데이터를 전송
-      const response = await axios.post('https://ebook.yjc.ac.kr/api/', data);
-      alert('이벤트 참여가 성공적으로 되었습니다!');
+      // 참여 로그 저장 API 호출
+      const saveLogResponse = await axios.get(`https://lib.yju.ac.kr/YJCService/Service.svc/SaveExpoLog?IDNO=${studentId}`);
+      const saveLogResult = saveLogResponse.data.SaveExpoLogResult;  // 응답에서 SaveExpoLogResult 필드 접근
+      if (saveLogResult === '1') {
+        // 성공적으로 로그 저장
+        // 중복 확인 API 호출
+        const duplicateCheckResponse = await axios.get(`https://lib.yju.ac.kr/YJCService/Service.svc/GetExpoLog?IDNO=${studentId}&SDATE=${startDate}&EDATE=${endDate}`);
+
+        const timesParticipated = parseInt(duplicateCheckResponse.data.GetExpoLogResult, 10);
+        if (timesParticipated > 1) {
+          alert('이미 참여한 이벤트입니다!');
+          setShowModal(false); // 중복 참여인 경우 모달 창 닫기
+        } else if (timesParticipated === 0) {
+          alert("아직 이벤트 기간이 아닙니다.")
+          setShowModal(false);
+        }
+        else {
+          alert('이벤트 참여가 성공적으로 되었습니다!');
+          setShowModal(false); // 성공적으로 참여 완료한 경우도 모달 창 닫기
+        }
+      } else if (saveLogResult === '2') {
+        console.log(saveLogResponse);
+        alert('학번을 제대로 입력해주세요.');
+      }  else if (saveLogResult === '0_^YJCL' || saveLogResult === '0') {
+        alert('서버 오류 또는 이벤트 참여 실패!');
+      }
     } catch (error) {
-      alert('이미 참여한 이벤트입니다!') // 중복 참여 에러 메시지 처리
-    } finally {
-      setShowModal(false); // 서버 요청 후 모달 창 닫기
+      console.error('이벤트 참여 중 에러가 발생했습니다:', error);
+      alert('서버 오류가 발생했습니다. 다시 시도해주세요.');
     }
   };
 
