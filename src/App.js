@@ -5,6 +5,7 @@ import ResultPage from './components/ResultPage';
 import StartPage from './components/StartPage';
 import Modal from './components/Modal';
 import axios from 'axios'; // 서버와의 통신을 위한 axios 라이브러리
+import './css/Main.css';
 
 const App = () => {
   // 질문 페이지에서 현재 위치한 질문의 인덱스 상태
