@@ -1,12 +1,32 @@
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import '../css/QuestionPage.css';
 
 // QuestionPage 컴포넌트: 현재 질문과 답변 선택지를 보여주는 역할
-const QuestionPage = ({ question, options, onAnswerSelect }) => {
+const QuestionPage = ({ question, options, onAnswerSelect, currentQuestionIndex, totalQuestions }) => {
+    const [loadAnimation, setLoadAnimation] = useState(true);
+
+    useEffect(() => {
+        // 한번만 실행
+        if (currentQuestionIndex === 0) {
+            setLoadAnimation(true);
+            setTimeout(() => setLoadAnimation(false), 500);
+        }
+    }, [currentQuestionIndex]);
+
+    const progress = ((currentQuestionIndex+1) / totalQuestions) * 100; // 0% 에서 100%
+
     return (
         <div className="question-page">
-            {/* 현재 질문을 보여주는 부분 */}
-            <h2>Q1. {question}</h2>
+
+            <div className="progress-bar-wrapper">
+                {/* 진행 상태를 보여주는 게이지바 */}
+                <div className="progress-bar-container">
+                    <div className={`progress-bar ${loadAnimation ? 'animate' : ''}`} style={{width: `${progress}%`}}></div>
+                </div>
+                <span className="progress-text">{currentQuestionIndex + 1}/{totalQuestions}</span>
+            </div>
+            {/* 질문 번호, 질문 내용 */}
+            <h2>Q{currentQuestionIndex + 1}. {question}</h2>
 
             {/* 답변 선택지들을 보여주는 부분 */}
             <div className="options">

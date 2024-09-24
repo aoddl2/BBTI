@@ -2,7 +2,7 @@ import React from 'react';
 import '../css/ResultPage.css';
 
 // ResultPage 컴포넌트: 최종 MBTI 결과와 이에 맞는 책 추천 목록을 보여주는 역할
-const ResultPage = ({ mbtiResult, books, onSave }) => {
+const ResultPage = ({ mbtiResult, books, onSave, onReset }) => {
     // books 배열에서 사용자의 MBTI 결과에 맞는 책을 필터링하여 추천
     const filteredBooks = books.filter((book) => book.mbti === mbtiResult);
 
@@ -32,6 +32,7 @@ const ResultPage = ({ mbtiResult, books, onSave }) => {
 
             {/* '나의 결과 저장하기' 버튼: 클릭 시 부모 컴포넌트의 onSave 함수 호출 */}
             <button onClick={onSave}>나의 결과 저장하기</button>
+            <button onClick={onReset}>다시 시작하기</button>
         </div>
     );
 };

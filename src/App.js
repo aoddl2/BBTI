@@ -23,6 +23,14 @@ const App = () => {
   // 시작 페이지가 표시되는지 여부를 관리하는 상태
   const [showStartPage, setShowStartPage] = useState(true);
 
+  // 시작 페이지로 돌아가기
+  const reset = () => {
+    setCurrentQuestionIndex(0); // 질문 초기화
+    setAnswers([]); // 저장된 답변 초기화
+    setMbtiResult(null); // BBTI 결과 초기화
+    setShowStartPage(true); // 시작페이지 표시
+  }
+
   // 시작 버튼 클릭 시 호출, 시작 페이지를 숨기고 질문 페이지를 표시
   const handleStart = () => {
     setShowStartPage(false); // 질문을 시작할 때 시작 페이지를 숨김
@@ -65,11 +73,10 @@ const App = () => {
 
     try {
       // 서버 URL로 POST 요청을 통해 데이터를 전송
-      const response = await axios.post('https://~~~~/api/save-result', data);
+      const response = await axios.post('https://ebook.yjc.ac.kr/api/', data);
       alert('이벤트 참여가 성공적으로 되었습니다!');
     } catch (error) {
-      alert('이벤트 참여 실패! 다시 입력해주세요:')
-      console.error('이벤트 참여 실패! 다시 입력해주세요:', error);
+      alert('이미 참여한 이벤트입니다!') // 중복 참여 에러 메시지 처리
     } finally {
       setShowModal(false); // 서버 요청 후 모달 창 닫기
     }
@@ -85,11 +92,13 @@ const App = () => {
             <QuestionPage
                 question={questions[currentQuestionIndex].question}
                 options={questions[currentQuestionIndex].options}
+                currentQuestionIndex={currentQuestionIndex}
+                totalQuestions={questions.length}
                 onAnswerSelect={handleAnswerSelect}
             />
         ) : (
-            // MBTI 결과가 있으면 결과 페이지를 보여줌
-            <ResultPage mbtiResult={mbtiResult} books={books} onSave={handleSave} />
+            // BBTI 결과가 있으면 결과 페이지를 보여줌
+            <ResultPage mbtiResult={mbtiResult} books={books} onSave={handleSave} onReset={reset}/>
         )}
 
         {/* 모달 창이 열려 있을 때 표시 */}
