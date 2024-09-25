@@ -6,9 +6,9 @@
 }
 
 @font-face {
-    font-family: 'TTWanjudaedunsancheB';
-    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/TTWanjudaedunsancheB.woff2') format('woff2');
-    font-weight: 700;
+    font-family: 'BagelFatOne-Regular';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_JAMO@1.0/BagelFatOne-Regular.woff2') format('woff2');
+    font-weight: normal;
     font-style: normal;
 }
 
@@ -24,7 +24,7 @@ table, caption, tbody, tfoot, thead, tr, th, td,
 article, aside, canvas, details, embed,
 figure, figcaption, footer, header, hgroup,
 menu, nav, output, ruby, section, summary,
-time, mark, audio, video {
+time, mark, audio, video, input {
     margin: 0;
     padding: 0;
     border: 0;
@@ -81,7 +81,6 @@ button {
     border-radius: 5px;
     padding: 18px;
     width: 100%;
-    transition: all 0.3s;
 }
 
 button img {
@@ -90,15 +89,20 @@ button img {
 }
 
 button.black-btn {
-    background-color: #000;
     border: none;
+    background-color: #000;
     color: #fff;
-    font-weight: bold;
+    font-weight: 800;
     font-size: 1.5em;
-    border-radius: 15px;
+    -webkit-border-radius: 50px;
+    -moz-border-radius: 50px;
+    border-radius: 50px;
 }
 
-button:hover {
-    background-color: #000;
-    color: #fff;
+button.btn-i {
+    background-color: #fc6c59;
+}
+
+button.btn-e {
+    background-color: #199b8e;
 }
