@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { questions, books } from './data';
+import { questions, books, bbtiTypes } from './data';
 import QuestionPage from './components/QuestionPage';
 import ResultPage from './components/ResultPage';
 import StartPage from './components/StartPage';
@@ -98,7 +98,7 @@ const App = () => {
             />
         ) : (
             // BBTI 결과가 있으면 결과 페이지를 보여줌
-            <ResultPage mbtiResult={mbtiResult} books={books} onSave={handleSave} onReset={reset}/>
+            <ResultPage mbtiResult={mbtiResult} books={books} bbtiTypes={bbtiTypes} onSave={handleSave} onReset={reset}/>
         )}
 
         {/* 모달 창이 열려 있을 때 표시 */}

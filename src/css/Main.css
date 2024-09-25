@@ -1,3 +1,17 @@
+@font-face {
+    font-family: 'HakgyoansimNadeuriTTF-B';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/2408-5@1.0/HakgyoansimNadeuriTTF-B.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'TTWanjudaedunsancheB';
+    src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2304-2@1.0/TTWanjudaedunsancheB.woff2') format('woff2');
+    font-weight: 700;
+    font-style: normal;
+}
+
 html, body, div, span, applet, object, iframe,
 h1, h2, h3, h4, h5, h6, p, blockquote, pre,
 a, abbr, acronym, address, big, cite, code,
@@ -17,6 +31,7 @@ time, mark, audio, video {
     font-size: 100%;
     font: inherit;
     vertical-align: baseline;
+    box-sizing: border-box;
 }
 article, aside, details, figcaption, figure,
 footer, header, hgroup, menu, nav, section {
@@ -39,7 +54,6 @@ button {
 
 * {
     font-family: 'SUIT Variable', sans-serif;
-    box-sizing: border-box;
 }
 
 #root {
@@ -51,20 +65,37 @@ button {
     margin: 0 auto;
 }
 
+.page {
+    padding: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
 button {
-    font-size: 1.5em;
-    font-weight: bold;
+    font-size: 1.2em;
+    font-weight: 600;
     background-color: #fff;
     border: 2px #000 solid;
-    border-radius: 15px;
+    border-radius: 5px;
     padding: 18px;
-    width: calc(100% - 60px);
+    width: 100%;
     transition: all 0.3s;
+}
+
+button img {
+    width: 22px;
+    margin-left: 5px;
 }
 
 button.black-btn {
     background-color: #000;
+    border: none;
     color: #fff;
+    font-weight: bold;
+    font-size: 1.5em;
+    border-radius: 15px;
 }
 
 button:hover {
