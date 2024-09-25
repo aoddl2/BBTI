@@ -1,8 +1,14 @@
 import React, {useEffect, useState} from 'react';
 import '../css/QuestionPage.css';
+import imgQ1 from '../images/question-1.png'
+import imgQ2 from '../images/question-2.png';
+import imgQ3 from '../images/question-3.png';
+import imgQ4 from '../images/question-4.png';
+
+export const imgQs = [imgQ1, imgQ2, imgQ3, imgQ4];
 
 // QuestionPage 컴포넌트: 현재 질문과 답변 선택지를 보여주는 역할
-const QuestionPage = ({ question, options, onAnswerSelect, currentQuestionIndex, totalQuestions }) => {
+const QuestionPage = ({question, options, onAnswerSelect, currentQuestionIndex, totalQuestions}) => {
     const [loadAnimation, setLoadAnimation] = useState(true);
 
     useEffect(() => {
@@ -13,20 +19,25 @@ const QuestionPage = ({ question, options, onAnswerSelect, currentQuestionIndex,
         }
     }, [currentQuestionIndex]);
 
-    const progress = ((currentQuestionIndex+1) / totalQuestions) * 100; // 0% 에서 100%
+    const progress = ((currentQuestionIndex + 1) / totalQuestions) * 100; // 0% 에서 100%
 
     return (
-        <div className="question-page">
+        <div className="question-page page">
 
             <div className="progress-bar-wrapper">
                 {/* 진행 상태를 보여주는 게이지바 */}
                 <div className="progress-bar-container">
-                    <div className={`progress-bar ${loadAnimation ? 'animate' : ''}`} style={{width: `${progress}%`}}></div>
+                    <div className={`progress-bar ${loadAnimation ? 'animate' : ''}`}
+                         style={{width: `${progress}%`}}></div>
                 </div>
-                <span className="progress-text">{currentQuestionIndex + 1}/{totalQuestions}</span>
+                {/*<span className="progress-text">{currentQuestionIndex + 1}/{totalQuestions}</span>*/}
             </div>
-            {/* 질문 번호, 질문 내용 */}
-            <h2>Q{currentQuestionIndex + 1}. {question}</h2>
+
+            <div className="section-question">
+                <p className="question">Q{currentQuestionIndex + 1}.</p>
+                <img src={imgQs[currentQuestionIndex]} alt="wiger"/>
+                <p className="question">{question}</p>
+            </div>
 
             {/* 답변 선택지들을 보여주는 부분 */}
             <div className="options">

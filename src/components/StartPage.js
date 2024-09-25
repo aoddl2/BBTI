@@ -5,7 +5,7 @@ import title from '../images/bbti-title.png';
 
 const StartPage = ({ onStart }) => {
     return (
-        <div className="start-page">
+        <div className="start-page page">
             <header>
                 <img src={logo} alt="영진전문대학교 도서관"/>
             </header>

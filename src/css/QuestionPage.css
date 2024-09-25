@@ -1,55 +1,27 @@
 .question-page {
-    text-align: center; /* 텍스트 중앙 정렬 */
-    margin: 50px; /* 여백 설정 */
-}
-
-.question-page h2 {
-    margin-bottom: 10px; /* 제목 아래의 여백 */
-}
-
-.options {
-    display: flex; /* 버튼을 플렉스 아이템으로 처리 */
-    flex-direction: column; /* 버튼을 수직으로 배열 */
-    align-items: center; /* 버튼을 중앙 정렬 */
-}
-
-button {
-    background-color: #f0f0f0; /* 버튼 배경색 */
-    border: none; /* 테두리 제거 */
-    border-radius: 20px; /* 버튼 모서리 둥글게 처리 */
-    padding: 10px 20px; /* 내부 여백 */
-    margin: 15px; /* 버튼 간 여백 */
-    width: 80%; /* 버튼 너비 */
-    max-width: 300px; /* 최대 너비 설정 */
-    box-shadow: 2px 2px 5px rgba(0,0,0,0.1); /* 그림자 효과 */
-    cursor: pointer; /* 커서 모양 변경 */
-    transition: background-color 0.3s; /* 배경색 변경 애니메이션 */
-}
-
-button:hover {
-    background-color: #e0e0e0; /* 호버 상태의 배경색 */
+    justify-content: space-between;
+    height: 100vh;
 }
 
 .progress-bar-wrapper {
     display: flex;
-    align-items: center;  /* 세로 중앙 정렬 */
-    justify-content: center;  /* 가로 중앙 정렬 */
-    width: 30%;  /* 전체 너비 */
-    margin: 30px auto;  /* 상하 여백 설정 및 자동으로 좌우 여백 */
-    position: relative;  /* 상대 위치 */
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    position: relative;
 }
 
 .progress-bar-container {
     flex-grow: 1;
-    background-color: #ddd;
-    height: 10px;
+    background-color: #eee;
+    height: 6px;
     border-radius: 5px;
     overflow: hidden;
 }
 
 .progress-bar {
     height: 100%;
-    background-color: #808080;
+    background-color: #000;
     width: 0; /* 초기 너비 설정 */
     border-radius: 40px;
     transition: width 0.5s ease-in-out; /* 애니메이션 효과 */
@@ -60,8 +32,12 @@ button:hover {
 }
 
 @keyframes fillBar {
-    from { width: 0; }
-    to { width: 25%; }
+    from {
+        width: 0;
+    }
+    to {
+        width: 25%;
+    }
 }
 
 .progress-text {
@@ -72,8 +48,31 @@ button:hover {
     color: #333;
 }
 
-.options button {
-    margin: 20px;
-    padding: 20px 20px;
-    cursor: pointer;
+.section-question {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+}
+
+.section-question img {
+    width: 150px;
+}
+
+p.question {
+    width: 80%;
+    color: #000;
+    font-size: 2em;
+    line-height: 1.5em;
+    font-family: 'HakgyoansimNadeuriTTF-B';
+}
+
+.options {
+    width: 100%;
+    margin-top: 30px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
 }
