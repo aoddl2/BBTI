@@ -66,7 +66,7 @@ const App = () => {
   // 학번을 입력한 후 '저장' 버튼 클릭 시 서버로 데이터를 보내는 함수
   const handleModalSubmit = async (studentId) => {
     // 이벤트 참여 기간 설정
-    const startDate = '2024-09-25';
+    const startDate = '2024-09-30';
     const endDate = '2024-10-31';
 
     try {

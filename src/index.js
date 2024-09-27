@@ -8,7 +8,7 @@ import reportWebVitals from './reportWebVitals';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
   <React.StrictMode>
-      <BrowserRouter basename="/BBTI2">
+      <BrowserRouter basename="/BBTI">
           <App />
       </BrowserRouter>
   </React.StrictMode>
